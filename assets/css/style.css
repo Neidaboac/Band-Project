@@ -1,0 +1,558 @@
+/* Reset CSS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* 
+Nguyên tắc: 
+từ ngoài vào trong
+từ trên xuống dưới
+từ tổng quan đến chi tiết
+
+Tìm: 
+Vị Trí
+Kích Thước (Width, Height)
+Màu Sắc
+kiểu dáng (kiểu chữ, dọc - ngang,...)
+*/
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+.clear {
+    clear: both;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.mt-8 {
+    margin-top: 8px !important;
+}
+
+.row {
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+/*
+.row::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+thay vì dùng div có class là clear thì còn 1 cách là tạo thẻ giả (pseudoclass) cho thẻ row*/
+
+.col {
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.col-full {
+    width: 100%;
+}
+
+.col-two {
+    width: 50%;
+}
+
+.col-three {
+    width: 33.33333%;
+    /*hoặc width: calc(100% / 3)*/
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 46px;
+    background-color: #000;
+    z-index: 1;
+}
+
+#nav {
+    display: inline-block;
+}
+
+#nav > li {
+    display: inline-block;
+}
+
+#nav li {
+    position: relative;
+}
+
+#nav > li > a {
+    color: #fff;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+#nav li a {
+    text-decoration: none;
+    line-height: 46px;
+    padding: 0 24px;
+    display: inline-block;
+}
+
+/* đặt :hover ở li là do kinh nghiệm, vì nếu đặt ở a thì sẽ bị 1 trường hợp là bấm vào more thì có những thẻ sub hiện ra, rê chuột vào những thẻ sub thì more mất hover*/
+#nav > li:hover > a {
+    color: #000;
+    background-color: #ccc;
+}
+
+#nav li:hover .subnav {
+    display: block;
+}
+ 
+
+#nav, .subnav {
+    list-style: none;
+}
+
+#nav .subnav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
+    min-width: 160px;
+}
+
+#nav .subnav a {
+    color: black;
+    padding: 0 12px;
+    line-height: 38px;
+}
+
+#nav .subnav li:hover {
+    color: #000;
+    background-color: #ccc;
+}
+
+#header .ti-angle-down {
+    font-size: 16px;
+}
+
+#header .ti-menu, 
+#header .ti-search {
+    float: right;
+    color: white;
+    font-size: 24px;
+    line-height: 46px;
+    padding: 0 21px;
+}
+
+#header .ti-search:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+#header .ti-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#header .ti-menu:hover {
+    background-color: #ccc;
+    color: #000;
+}
+
+#slider {
+    margin-top: 46px; 
+    padding-top: 50%;
+    /*short-hand viết tắc của các dạng background*/ 
+    /* 'url' (background image) 'top center' (background position) / 'cover' (background size) 'no-repeat' (backbround repeat)*/
+    /*nhớ có dấu /  không có là không chạy đúng shorthand của background nên code không chạy*/
+    background: url('/Band\ Project/assets/img/slider/chicago.jpeg') top center / cover no-repeat;
+    position: relative;
+}
+
+#slider .text-content {
+    color: white;
+    position: absolute;
+    bottom: 48px;
+    text-align: center;
+
+    width: 100%;
+}
+/*có nhiều cách căn lề giữa vào hình
+    1.  left: 50%;
+        transform: translateX(-50%);
+
+    2.  width: 100%;
+
+    3.  left: 0;
+        right: 0;
+*/
+
+#slider .text-heading {
+    font-weight: 500;  /*độ dày chữ (dao động từ 100-700)*/
+    font-size: 24px;
+}
+
+#slider .text-description {
+    font-size: 12px;
+    margin-top: 25px;
+    text-shadow: 0 0 1px #000;
+}
+
+#content .content-section {
+    width: 800px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 64px 16px 0 16px;
+}
+#content .section-heading {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 4px;
+}
+
+#content .section-sub-heading {
+    font-size: 15px;
+    margin-top: 25px;
+    font-style: italic;
+    opacity: 0.6; /*làm độ trong suốt mờ đi, hoặc có thể tìm màu nhạt hơn màu đen cũng được*/
+
+}
+
+#content .about-text {
+    font-size: 15px;
+    margin-top: 25px;
+    text-align: justify; /*text-align: justify là căn đều 2 bên (cho text)*/
+    line-height: 1.4; /*line-height: khoảng cách (độ rộng) trên và dưới của 1 text line (có thể hiểu là line spacing haha), tiếng anh thường là 1.4 còn tiếng việt thường là 1.6*/
+}
+
+#content .section-heading,
+#content .section-sub-heading {
+    text-align: center;
+}
+
+#content .member {
+    padding-top: 48px;
+    padding-bottom: 96px;
+
+    /*overflow: hidden;*/ /* để ôm lấy những float, vì dùng float nó sẽ hiện mặt phẳng chồng lên và thẻ div lúc này khôg còn ôm lấy thẻ bên trong nữa */
+    /*việc float sang khỏi 1 mặt phẳng khác cũng ảnh hưởng đến padding và margin của những thẻ dưới (vì thẻ dưới sẽ căn margin và padding dựa trên block của thẻ trên (thẻ trên ko ôm được nên bị thu nhỏ lại) nên sẽ ảnh hưởng luôn những thẻ dưới*/
+
+    /*cách khác là sang html đặt 1 thẻ div class là clear
+    rồi sang CSS 
+    .clear {
+        clear: both
+    }*/
+}
+
+#content .member-name {
+    font-size: 15px;
+}
+
+#content .member-img {
+    margin-top: 15px;
+    width: 154px;
+    border-radius: 4px; /*bo góc tròn cho ảnh*/
+}
+
+.tour-section {
+    background-color: #000;
+}
+
+.ticket-list {
+    background-color: #fff;
+    margin: 40px 0 24px 0;
+    list-style: none;
+}
+
+.ticket-list li {
+    font-size: 16px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ccc;
+    color: #757575;
+}
+
+.ticket-list .sold-out {
+    background-color: red;
+    color: white;
+    padding: 4px 4px;
+    margin-left: 16px;
+}
+
+.ticket-list .quantity {
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    color: #fff;
+    float: right;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin-top: -3px;
+}
+
+.place-list {
+    margin-top: 16px;
+}
+
+.place-item {
+    margin: 48px 0;
+}
+
+.place-img {
+    width: 100%;
+    display: block;
+}
+
+.place-img:hover {
+    opacity: 0.6;
+}
+
+.place-body {
+    background-color: #fff;
+    padding: 16px;
+    font-size: 16px;
+    
+}
+
+.place-heading {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.place-time {
+    padding-top: 16px;
+    color: #757575;
+}
+
+.place-description {
+    padding-top: 16px;
+    line-height: 1.4;
+}
+
+.place-buy-btn {
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 16px;
+    display: inline-block;
+    margin-top: 16px;
+}
+
+.place-buy-btn:hover {
+    background-color: #ccc;
+    color: #000;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    /*
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    dùng 3 cái này để căn giữa trái phải trên dưới 1 thẻ nào đó cho 1 khung
+    */
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-container {
+    background-color: #fff;
+    width: 900px;
+    max-width: calc(100% - 32px); /*khi thu nhỏ trình duyệt thì vẫn chừa 1 khoảng cách là 16px 2 bên*/
+    min-height: 200px;
+    position: relative;
+    animation: modalFadeIn ease 0.5s;
+}
+
+@keyframes modalFadeIn {
+    from {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    color: #fff;
+    position: absolute;  
+    right: 0;
+    top: 0;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    opacity: 0.8;
+    background-color: red;
+}
+
+.modal-header {
+    height: 120px;
+    display: flex;
+    background-color: #009688;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #fff;
+}
+
+.modal .ti-bag {
+    margin-right: 16px;
+}
+
+.modal-body {
+    padding: 16px;
+}
+
+.modal-label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.modal-input {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+#buy-tickets {
+    background-color: #009688;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 16px;
+}
+
+#buy-tickets:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.modal-footer {
+    text-align: right;
+    padding: 16px;
+}
+
+.modal-footer a {
+    color: #2196F3;
+}
+
+.contact-content {
+    margin-top: 48px;
+    min-height: 200px;
+}
+
+.contact-info {
+    font-size: 16px;
+    line-height: 2;
+}
+
+.contact-info p i {
+    width: 20px;
+    display: inline-block;
+}
+
+.contact-info a {
+    color: #101aef;
+    opacity: 0.8;
+}
+
+.contact-info a:hover {
+    opacity: 1;
+}
+
+.contact-form {
+    font-size: 16px;
+}
+
+.contact-form .form-control {
+    padding: 12px;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.contact-form .form-submit-btn {
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    padding: 12px 16px;
+    text-transform: uppercase;
+    float: right;
+    cursor: pointer;
+}
+
+
+.contact-form .form-submit-btn:hover {
+    background-color: #ccc;
+    color: #000;
+    border: none;
+}
+
+.map-section img {
+    width: 100%;
+}
+
+#footer {
+    padding: 64px 16px;
+    text-align: center;
+    font-size: 24px;
+}
+
+#footer .social-list a {
+    color: #000;
+    opacity: 0.6;
+    text-decoration: none;
+}
+
+#footer .copyright {
+    color: #000;
+    opacity: 0.6;
+    padding-top: 16px;
+}
+
+#footer .copyright a {
+    color: #000;
+}
+
+#footer .social-list a:hover,
+#footer .copyright a:hover {
+    opacity: 0.4;
+}
